@@ -25,3 +25,11 @@ Powtórzyłem materiał potrzebny do zaliczenia kolokwium na następnym zjeździ
 
 19.12.2020
 Zaliczyłem kolokwium. Ponadto dowiedziałem się na temat edytorów programistycznych. Wykonałem także zadanie z szuflandii, które znajduje się w pliku cw5.
+
+16.01.2020
+Wprowadzenie do powershell.
+Więcej info znajduje się w pliku cw6.
+
+30.01.2020 oraz 13.02.2020
+Wprowadzenie do PowerShell - cwiczenia
+Praktyczna nauka powershella w cw7-8.

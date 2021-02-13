@@ -1,0 +1,84 @@
+30.01.2020 oraz 13.02.2020
+Wprowadzenie do PowerShell - cwiczenia
+
+Poprzednie zajęcia przygotowały nas do rozpoczęcia samodzielnej pracy w PowerShellu.
+
+1.
+Skrypty w PowerShellu muszą być podpisane przez Microsoft. 
+Jednakże można uruchomić skrypt z uprawnieniami Admina oraz wpisać Set-ExecutionPolicy Bypass i potwierdzić.
+Mimo wszystko dla bezpieczeństwa można uruchomić jako użytkownik, nie jako admin.
+2.
+Sprawdzenie ustawienia uruchamiania skryptów : Get-ExecutionPolicy
+
+Pomoc z poleceniem Get-Execution Policy: Get-Help Get-ExecutionPolicy 
+Jak należy używać polecenia Get-ExecutionPolicy - należy wpisać Get-Help Get-ExecutionPolicy  -Examples
+
+Aliasy dla Get-Help:
+Get-Help = man
+Get-ChildItem - ls
+
+3.
+Konwencje nazewnicze: Czasownik-NaCzymMaOperować, przykład: Get-ExecutionPolicy, Find-Module, Create-Item
+
+4.
+Moduły do załadowania, ponieważ nie są domyślnie uruchomione:
+Get-Module - wyświetlenie załadowanych modułów
+Get-Module -ListAvailable  - lista dostepnych do załadowania modułów
+
+5. Pobranie pliku:
+np. $job  = Start-BitsTransfer -Source
+W taki sposób można pobrać plik z internetu.
+
+6.  Uruchomienie notepad poprzez wołanie:
+$C:\Windows\notepad.exe
+
+7. Listowanie dysków:
+Get-PSdrive
+
+8.  Czas wykonywanego polecenia: 
+Measure-Command{polecenie}
+
+9. Zarządzanie systemem poprzez wmi:
+Get-WmiObject -Class Win32_Product | Format-Table -AutoSize
+pakiety microsoft ->>> Get-WmiObject -Class Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | Select-Object Name, Vendor | Format-Table -AutoSize
+Get-WmiObject -Class Win32_Product | Select-Object Name, Vendor | Format-Table -AutoSize
+
+10. Zwrócenie modułów równych lub większych wersji 2.0.0.0:
+Get-Module -ListAvailable | ? {$_Version -ge "2.0.0.0"}
+
+11. Polecenia w modułach:
+Get-Module -ListAvailable | ? {$_Version -ge "2.0.0.0"} | % {Get-Command -Module $Module $_.Name}
+
+12. Wyświetlanie procesów o nazwie "Add-"  / "Get-":
+Get-Module - ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} |  ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")}
+
+13. Importowanie modułu:
+Import-Module <moduł>
+ipmo <moduł>
+
+przykład: Import-Module BitsTransfer / ipmo BitsTransfer
+
+polecenie zwracające wszystkie komendy w danym module:
+
+
+14. Stan transferu: 
+Get-BitsTransfer
+
+15. Kończenie transferu w tle:
+Complete-BitsTransfer -BitsJob $job
+
+16. Pobranie mojego repo:
+Start-BitsTransfer -Source https://github.com/s22612-pj/ukos2020-21_13c/archive/master.zip -Destination C:\Users\<Kamil>\Downloads\
+
+
+17. Info o zainstalowanych apkach:
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+
+
+
+
+
+
+
+
+
